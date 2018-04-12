@@ -16,6 +16,8 @@
 
 public interface Bumpable {
   public boolean bump( char in_symbol );
+  public boolean symbolValidCheck( char in_symbol );
+  public int step();
   
   
 }

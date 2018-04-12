@@ -14,7 +14,7 @@
  * @since 2018-04-08
  */ 
 
-abstract public class WorldItem implements WorldItemCheck {
+abstract public class WorldItem implements GridItem {
   private final String name;
   private final char token;
   private int x, y;
@@ -36,14 +36,13 @@ abstract public class WorldItem implements WorldItemCheck {
    */ 
   
   public WorldItem(String in_name, char symbol, int in_x, int in_y, int in_grid_x, int in_grid_y) throws WorldItemException {
+    // Guards against invalid inputs
     if ( in_name.length() == 0 ) throw new WorldItemException("An empty String was passed as 'name'");
-    
     if ( !symbolValidCheck(symbol) ) throw new WorldItemException("An incorrect symbol was passed to represent this Object");
-    
     if ( in_grid_x < 0 || in_grid_y < 0 ) throw new WorldItemException("An invalid grid-size was passed, this cannot be used to verify x or y");
-    
     if ( in_x > in_grid_x || in_y > in_grid_y ) throw new WorldItemException("An invalid x or y value was passed");
     
+    // If passed, we then initiliaze the fields of our object:
     this.name = in_name;
     this.token = symbol;
     this.x = in_x;
@@ -51,24 +50,10 @@ abstract public class WorldItem implements WorldItemCheck {
   }
   
   /**
-   * Accessor for private String 'name'
-   */ 
-  public String getName() {
-    return this.name;
-  }
-  
-  /**
    * Accessor for private char 'token'
    */ 
   public char getToken() {
     return this.token;
-  }
-  
-  /**
-   * Accessor for private int 'x'
-   */ 
-  public int getX() {
-    return this.x;
   }
   
   /**
@@ -84,13 +69,6 @@ abstract public class WorldItem implements WorldItemCheck {
   }
   
   /**
-   * Accessor for private int 'y'
-   */ 
-  public int getY() {
-    return this.y;
-  }
-  
-  /**
    * Mutator for private int 'y'; 'in_grid_y' is provided by the World Object's 'y_size'
    * 
    * @see World
@@ -100,6 +78,12 @@ abstract public class WorldItem implements WorldItemCheck {
     
     this.y = in_y;
     return true;
+  }
+  
+  // TO DO: Put in safeguards:
+  public void update( int new_x, int new_y, int x_spec, int y_spec ) {
+    this.setX(new_x, x_spec);
+    this.setY(new_y, y_spec);
   }
   
 }

@@ -9,7 +9,7 @@
  * @since 2018-04-08
  */ 
 
-public class Immovable extends WorldItem {
+public class Immovable extends WorldItem implements GridItem {
   
   public Immovable(String in_name, char symbol, int in_x, int in_y, int in_grid_x, int in_grid_y) throws WorldItemException {
     super(in_name, symbol, in_x, in_y, in_grid_x, in_grid_y);
@@ -20,5 +20,12 @@ public class Immovable extends WorldItem {
     return false;
   }
   
+  public char step() {
+    return 'E';
+  }
   
+  public void setMode( boolean state){}
+  public boolean getMode(){
+    return false;
+  }
 }

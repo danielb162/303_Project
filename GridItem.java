@@ -21,6 +21,7 @@ public interface GridItem {
   public char step();
   public char getToken(); // Exists so that we can invoke this from our GridItem 2D array in World 
   public void update( int new_x, int new_y, int x_spec, int y_spec );
+  // These allow us to stop autonomous objects from moving more than once:
   public void setMode( boolean state);
   public boolean getMode();
   
