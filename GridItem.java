@@ -18,7 +18,7 @@
 
 public interface GridItem {
   public boolean symbolValidCheck( char in_symbol ); // Used during construction of WorldItems
-  public char step();
+  public char step(); // Chars of 'E' or 'e' are returned by non-autonomous objects
   public char getToken(); // Exists so that we can invoke this from our GridItem 2D array in World 
   public void update( int new_x, int new_y, int x_spec, int y_spec );
   // These allow us to stop autonomous objects from moving more than once:
