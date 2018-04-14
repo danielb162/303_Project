@@ -21,7 +21,7 @@ public class Moveable extends WorldItem implements GridItem {
   }
   
   public char step() {
-    return 'E';
+    return 'e';
   }
 
   public void setMode( boolean state){}
